@@ -1,2 +1,2 @@
-# java-hack
-It's a java hack status repository, ha!
+# hava-jack
+It's a kava jack status repository, ha!
