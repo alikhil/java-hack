@@ -24,6 +24,7 @@ import java.util.List;
 public class AccountService implements UserDetailsService, SignUpService {
 
     private AccountRepository accountRepository;
+    private ClientService clientService;
 
     @Autowired
     public AccountService(AccountRepository accountRepository) {
@@ -70,6 +71,7 @@ public class AccountService implements UserDetailsService, SignUpService {
                     .token(CommonUtils.generateUUID())
                     .build();
             accountRepository.save(account);
+            clientService.createClient(account);
             return new TokenDto(account.getToken());
         }
         throw new AccountAlreadyExistException(String.format("Account with phone number %s already exist",
