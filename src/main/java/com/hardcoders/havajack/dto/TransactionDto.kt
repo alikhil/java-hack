@@ -1,8 +1,8 @@
-package com.hardcoders.havajack.model
+package com.hardcoders.havajack.dto
 
 import com.fasterxml.jackson.annotation.JsonCreator
 
-data class TransactionForm  @JsonCreator constructor(
+data class TransactionDto  @JsonCreator constructor(
         val fromUser: String,
         val toUser: String,
         val amount: Double,

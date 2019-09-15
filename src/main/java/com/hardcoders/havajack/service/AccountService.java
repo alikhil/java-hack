@@ -48,6 +48,7 @@ public class AccountService implements UserDetailsService, SignUpService {
         var password = credentialsDto.getPassword();
         var account = accountRepository.findByPhone(phone);
         if (account != null) {
+            //TODO: encode password
             if (account.getPassword().equals(password)) {
                 return new TokenDto(account.getToken());
             }
