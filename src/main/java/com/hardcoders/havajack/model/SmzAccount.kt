@@ -1,6 +1,6 @@
 package com.hardcoders.havajack.model
 
-import com.hardcoders.havajack.model.registration.SmzAccountForm
+import com.hardcoders.havajack.model.registration.SmzAccountDto
 import java.time.Instant
 import java.util.*
 import javax.persistence.Entity
@@ -29,7 +29,7 @@ public class SmzAccount(
         val oktmo: String
         ) {
 
-    constructor(form: SmzAccountForm) :
+    constructor(form: SmzAccountDto) :
             this(inn = form.inn,
                     firstName = form.firstName,
                     secondName = form.secondName,

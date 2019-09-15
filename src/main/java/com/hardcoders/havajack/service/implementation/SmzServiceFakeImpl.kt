@@ -9,7 +9,7 @@ import com.hardcoders.havajack.model.income.ReciptCancelationResult
 import com.hardcoders.havajack.model.registration.RegistrationRequestID
 import com.hardcoders.havajack.model.registration.RegistrationRequestStatus
 import com.hardcoders.havajack.model.registration.RegistrationResultStatus
-import com.hardcoders.havajack.model.registration.SmzAccountForm
+import com.hardcoders.havajack.model.registration.SmzAccountDto
 import com.hardcoders.havajack.repository.IncomeRepository
 import com.hardcoders.havajack.repository.SmzAccountRepository
 import com.hardcoders.havajack.service.SmzService
@@ -40,7 +40,7 @@ class SmzServiceFakeImpl @Autowired constructor(
     }
 
 
-    override fun createAccount(form: SmzAccountForm): RegistrationRequestID {
+    override fun createAccount(form: SmzAccountDto): RegistrationRequestID {
         val account = this.smzAccountRepository.save(SmzAccount(form))
         return account.id.toString()
     }

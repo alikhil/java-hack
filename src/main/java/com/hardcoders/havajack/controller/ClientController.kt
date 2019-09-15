@@ -1,7 +1,7 @@
 package com.hardcoders.havajack.controller
 
 import com.hardcoders.havajack.model.Client
-import com.hardcoders.havajack.model.registration.SmzAccountForm
+import com.hardcoders.havajack.model.registration.SmzAccountDto
 import com.hardcoders.havajack.repository.ClientRepository
 import com.hardcoders.havajack.service.SmzService
 import org.springframework.web.bind.annotation.*
@@ -13,7 +13,7 @@ class ClientController(
         val smzService: SmzService
 ) {
     @PostMapping("/new")
-    fun new(@RequestBody account: SmzAccountForm): String {
+    fun new(@RequestBody account: SmzAccountDto): String {
         smzService.createAccount(account)
         val client = Client(
                 inn = account.inn,

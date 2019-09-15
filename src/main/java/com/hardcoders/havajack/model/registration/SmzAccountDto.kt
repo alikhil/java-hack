@@ -4,7 +4,7 @@ import org.codehaus.jackson.annotate.JsonCreator
 import java.util.*
 
 
-public data class SmzAccountForm @JsonCreator constructor(
+public data class SmzAccountDto @JsonCreator constructor(
     val inn: String,
     val firstName: String,
     val secondName: String,

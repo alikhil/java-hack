@@ -6,13 +6,13 @@ import com.hardcoders.havajack.model.income.ReceiptCancelationRequest
 import com.hardcoders.havajack.model.income.ReciptCancelationResult
 import com.hardcoders.havajack.model.registration.RegistrationRequestID
 import com.hardcoders.havajack.model.registration.RegistrationRequestStatus
-import com.hardcoders.havajack.model.registration.SmzAccountForm
+import com.hardcoders.havajack.model.registration.SmzAccountDto
 
 interface SmzService {
 
     fun canCreateAccount(inn: String): Boolean
 
-    fun createAccount(form: SmzAccountForm): RegistrationRequestID
+    fun createAccount(form: SmzAccountDto): RegistrationRequestID
 
     fun getCreateStatus(id: RegistrationRequestID): RegistrationRequestStatus
 
