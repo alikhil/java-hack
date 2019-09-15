@@ -4,18 +4,16 @@ import com.hardcoders.havajack.model.Client
 import com.hardcoders.havajack.model.registration.SmzAccountForm
 import com.hardcoders.havajack.repository.ClientRepository
 import com.hardcoders.havajack.service.SmzService
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RequestParam
+import org.springframework.web.bind.annotation.*
 
+@RestController
 @RequestMapping("/client")
 class ClientController(
         val clientRepository: ClientRepository,
         val smzService: SmzService
 ) {
     @PostMapping("/new")
-    fun new(account: SmzAccountForm): String {
+    fun new(@RequestBody account: SmzAccountForm): String {
         smzService.createAccount(account)
         val client = Client(
                 inn = account.inn,
