@@ -1,4 +1,4 @@
-package com.hardcoders.havajack.service
+package com.hardcoders.havajack.service.implementation
 
 import com.hardcoders.havajack.model.Income
 import com.hardcoders.havajack.model.SmzAccount
@@ -12,6 +12,7 @@ import com.hardcoders.havajack.model.registration.RegistrationResultStatus
 import com.hardcoders.havajack.model.registration.SmzAccountForm
 import com.hardcoders.havajack.repository.IncomeRepository
 import com.hardcoders.havajack.repository.SmzAccountRepository
+import com.hardcoders.havajack.service.SmzService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.time.Instant
@@ -26,15 +27,15 @@ class SmzServiceFakeImpl @Autowired constructor(
 )
     : SmzService {
     override fun cancelReceipt(request: ReceiptCancelationRequest): ReciptCancelationResult {
-        var income = incomeRepository.findById(request.receiptID.toLongOrNull() ?: 0)
+        val income = incomeRepository.findById(request.receiptID.toLongOrNull() ?: 0)
         if (income.isPresent) {
             incomeRepository.delete(income.get())
         }
         return ReciptCancelationResult("DELETED")
     }
 
-    override fun postIncome(incomeForm: IncomeForm): Receipt {
-        val income = incomeRepository.save(Income(incomeForm))
+    override fun postIncome(income: IncomeForm): Receipt {
+        val income = incomeRepository.save(Income(income))
         return Receipt(income.id.toString(), "https://needreceipt.com/restaurant2Default.png")
     }
 

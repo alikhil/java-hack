@@ -9,7 +9,7 @@ import java.io.Serializable;
 @Data
 @RequiredArgsConstructor
 @AllArgsConstructor
-public class SignUpDto implements Serializable {
+public class CredentialsDto implements Serializable {
     private String phone;
     private String password;
 }

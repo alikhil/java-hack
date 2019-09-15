@@ -16,7 +16,7 @@ class Client(
 
     var lockedAmount: Double = 0.0,
 
-    val tax: Double = 0.04
+    val tax: Double = 0.04,
 
     val invest: Double = 0.005 // per month
 )
