@@ -1,9 +1,6 @@
 package com.hardcoders.havajack.model
 
-import javax.persistence.Entity
-import javax.persistence.GeneratedValue
-import javax.persistence.GenerationType
-import javax.persistence.Id
+import javax.persistence.*
 
 @Entity
 class Client(
@@ -18,5 +15,9 @@ class Client(
 
     val tax: Double = 0.04,
 
-    val invest: Double = 0.005 // per month
+    val invest: Double = 0.005, // per month
+
+    @OneToOne
+    val account: Account?
+
 )
