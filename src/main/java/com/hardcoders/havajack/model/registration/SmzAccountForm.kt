@@ -3,7 +3,7 @@ package com.hardcoders.havajack.model.registration
 import java.util.*
 
 
-data class SmzAccountForm(
+public data class SmzAccountForm(
     val inn: String?,
     val firstName: String,
     val secondName: String,

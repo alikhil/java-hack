@@ -9,7 +9,7 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-class Income {
+public class Income {
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
     val id: Long = 0
 

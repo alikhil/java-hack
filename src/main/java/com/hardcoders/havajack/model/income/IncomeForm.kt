@@ -2,7 +2,7 @@ package com.hardcoders.havajack.model.income
 
 import java.util.*
 
-data class IncomeForm(
+public data class IncomeForm(
         val inn: String,
         val receiptId: String?,
         val requestTime: Date,
