@@ -1,3 +1,3 @@
 package com.hardcoders.havajack.model.registration
 
-typealias RegistrationRequestID = String
+public typealias RegistrationRequestID = String

@@ -1,10 +1,11 @@
 package com.hardcoders.havajack.model.registration
 
+import org.codehaus.jackson.annotate.JsonCreator
 import java.util.*
 
 
-data class SmzAccountForm(
-    val inn: String?,
+public data class SmzAccountForm @JsonCreator constructor(
+    val inn: String,
     val firstName: String,
     val secondName: String,
     val patronymic: String?,
