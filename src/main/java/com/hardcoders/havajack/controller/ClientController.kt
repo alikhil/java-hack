@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam
 @RequestMapping("/client")
 class ClientController(
         val clientRepository: ClientRepository,
-        val smzService: SmzService,
+        val smzService: SmzService
 ) {
     @PostMapping("/new")
     fun new(account: SmzAccountForm): String {
