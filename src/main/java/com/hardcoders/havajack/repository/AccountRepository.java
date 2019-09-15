@@ -10,4 +10,7 @@ public interface AccountRepository extends JpaRepository<Account, Long> {
 
     @Query
     Account findByPhone(String phone);
+
+    @Query
+    Account findByToken(String token);
 }
