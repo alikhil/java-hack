@@ -3,7 +3,7 @@ package com.hardcoders.havajack.model.registration
 import java.util.*
 
 
-enum class ResultStatus {
+enum class RegistrationResultStatus {
     ORDER_REGISTERED, // заявка на постановку на учет принята. Означает что ПП Самозанятые приняла заявку, но она не передана в регистрирующую подсистему АИС Налог3.
     IN_PROGRESS, // исполнение, т.е. постановка на учет находится на рассмотрении в регистрирующей подсистеме АИС Налог3.
     COMPLETED,  // поставлен на учет подтверждена со стороны регистрирующей подсистемы АИС Налог3 (терминальный статус заявки).
@@ -12,7 +12,7 @@ enum class ResultStatus {
 
 
 data class RegistrationRequestStatus(
-        val requestResult: ResultStatus,
+        val requestResult: RegistrationResultStatus,
         val rejectionReason: String,
         val registrationTime: Date,
         val lastRegistrationTime: Date,
