@@ -3,7 +3,7 @@ package com.hardcoders.havajack.service
 import com.hardcoders.havajack.model.Account
 import com.hardcoders.havajack.model.Client
 
-interface ClientService {
+public interface ClientService {
 
     fun createClient(account: Account): Client
 

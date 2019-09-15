@@ -4,10 +4,17 @@ import lombok.*;
 
 import java.io.Serializable;
 
-@Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
 public class TokenDto implements Serializable {
-    String token;
+    private String token;
+
+    public String getToken() {
+        return token;
+    }
+
+    public void setToken(String token) {
+        this.token = token;
+    }
 }

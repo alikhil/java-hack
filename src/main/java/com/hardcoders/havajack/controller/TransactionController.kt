@@ -19,7 +19,7 @@ class TransactionController(val clientsRepository: ClientRepository) {
             return "user receiving - not found"
         }
         val client = clientO.get()
-        client.availableAmount += newTransaction.amount * (100 - client.tax)
+        client.availableAmount += newTransaction.amount * (1 - client.tax)
         client.lockedAmount += newTransaction.amount * client.tax
 
         clientsRepository.save(client)

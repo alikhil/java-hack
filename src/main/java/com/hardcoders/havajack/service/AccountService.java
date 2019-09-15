@@ -6,7 +6,6 @@ import com.hardcoders.havajack.exception.AccountAlreadyExistException;
 import com.hardcoders.havajack.model.Account;
 import com.hardcoders.havajack.repository.AccountRepository;
 import com.hardcoders.havajack.utils.CommonUtils;
-import lombok.var;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
@@ -16,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -27,8 +27,9 @@ public class AccountService implements UserDetailsService, SignUpService {
     private ClientService clientService;
 
     @Autowired
-    public AccountService(AccountRepository accountRepository) {
+    public AccountService(AccountRepository accountRepository, ClientService clientService) {
         this.accountRepository = accountRepository;
+        this.clientService = clientService;
     }
 
     @Override
@@ -45,10 +46,10 @@ public class AccountService implements UserDetailsService, SignUpService {
 
     @Override
     public TokenDto signIn(CredentialsDto credentialsDto) {
-        var phone = credentialsDto.getPhone();
-        var password = credentialsDto.getPassword();
+        String phone = credentialsDto.getPhone();
+        String password = credentialsDto.getPassword();
         phone = CommonUtils.normalizePhone(phone);
-        var account = accountRepository.findByPhone(phone);
+        Account account = accountRepository.findByPhone(phone);
         if (account != null) {
             //TODO: encode password
             if (account.getPassword().equals(password)) {
@@ -59,11 +60,12 @@ public class AccountService implements UserDetailsService, SignUpService {
     }
 
     @Override
+    @Transactional
     public TokenDto signUp(CredentialsDto credentialsDto) throws AccountAlreadyExistException {
-        var phone = credentialsDto.getPhone();
-        var password = credentialsDto.getPassword();
+        String phone = credentialsDto.getPhone();
+        String password = credentialsDto.getPassword();
         phone = CommonUtils.normalizePhone(phone);
-        var account = accountRepository.findByPhone(phone);
+        Account account = accountRepository.findByPhone(phone);
         if (account == null) {
             account = Account.builder()
                     .phone(phone).password(password)

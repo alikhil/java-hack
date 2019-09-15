@@ -20,7 +20,7 @@ public class AccountController {
         return accountService.signUp(credentialsDto);
     }
 
-    @GetMapping("/sign-in")
+    @PostMapping("/sign-in")
     public TokenDto signIn(@RequestBody @Valid CredentialsDto credentialsDto) {
         return accountService.signIn(credentialsDto);
     }

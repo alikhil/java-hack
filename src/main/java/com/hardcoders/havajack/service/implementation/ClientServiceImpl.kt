@@ -6,8 +6,11 @@ import com.hardcoders.havajack.model.registration.SmzAccountDto
 import com.hardcoders.havajack.repository.AccountRepository
 import com.hardcoders.havajack.repository.ClientRepository
 import com.hardcoders.havajack.service.ClientService
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.stereotype.Service
 
-class ClientServiceImpl (
+@Service
+class ClientServiceImpl @Autowired constructor (
         val clientRepository: ClientRepository,
         val accountRepository: AccountRepository
 ) : ClientService {

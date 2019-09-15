@@ -20,4 +20,13 @@ class Client(
     @OneToOne
     val account: Account?
 
-)
+) {
+    constructor(): this(0, "",
+            0.0,
+            0.0,
+            0.04,
+            0.005,
+            null) {
+
+    }
+}
