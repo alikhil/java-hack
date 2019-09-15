@@ -6,15 +6,17 @@ import javax.persistence.GenerationType
 import javax.persistence.Id
 
 @Entity
-class Client {
+class Client(
     @Id @GeneratedValue(strategy = GenerationType.AUTO)
-    val id: Long = 0
+    val id: Long = 0,
 
-    val inn: String = ""
+    val inn: String = "",
 
-    var availableAmount: Double = 0.0
+    var availableAmount: Double = 0.0,
 
-    var lockedAmount: Double = 0.0
+    var lockedAmount: Double = 0.0,
 
     val tax: Double = 0.04
-}
+
+    val invest: Double = 0.005 // per month
+)

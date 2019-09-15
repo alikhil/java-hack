@@ -23,6 +23,7 @@ class TransactionController(val clientsRepository: ClientRepository) {
         client.lockedAmount += newTransaction.amount * client.tax
 
         clientsRepository.save(client)
+        // TODO: send money to Smz using smzService
         return "ok"
     }
 }
