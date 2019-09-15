@@ -39,8 +39,6 @@ class SmzServiceFakeImpl @Autowired constructor(
     }
 
 
-
-
     override fun createAccount(form: SmzAccountForm): RegistrationRequestID {
         val account = this.smzAccountRepository.save(SmzAccount(form))
         return account.id.toString()
