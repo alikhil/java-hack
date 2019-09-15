@@ -1,4 +1,4 @@
-package com.hardcoders.havajack.service
+package com.hardcoders.havajack.service.implementation
 
 import com.hardcoders.havajack.model.SmzAccount
 import com.hardcoders.havajack.model.registration.RegistrationRequestID
@@ -6,6 +6,7 @@ import com.hardcoders.havajack.model.registration.RegistrationRequestStatus
 import com.hardcoders.havajack.model.registration.ResultStatus
 import com.hardcoders.havajack.model.registration.SmzAccountForm
 import com.hardcoders.havajack.repository.SmzAccountRepository
+import com.hardcoders.havajack.service.SmzService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import java.time.Instant
@@ -14,8 +15,7 @@ import java.util.*
 // It's a bit hard to work with real Smz service for now
 // because of lack of documentation and API_KEY
 @Service
-class SmzServiceFakeImpl @Autowired constructor(private val smzAccountRepository: SmzAccountRepository)
-    : SmzService {
+class SmzServiceFakeImpl @Autowired constructor(private val smzAccountRepository: SmzAccountRepository) : SmzService {
 
     override fun createAccount(form: SmzAccountForm): RegistrationRequestID {
         val account = this.smzAccountRepository.save(SmzAccount(form))

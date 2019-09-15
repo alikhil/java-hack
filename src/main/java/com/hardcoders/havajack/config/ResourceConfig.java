@@ -12,25 +12,24 @@ import org.springframework.security.oauth2.provider.token.ResourceServerTokenSer
 @EnableResourceServer
 public class ResourceConfig extends ResourceServerConfigurerAdapter {
 
-    private ResourceServerTokenServices tokenServices;
-
-    @Autowired
-    public ResourceConfig(ResourceServerTokenServices tokenServices) {
-        this.tokenServices = tokenServices;
-    }
-
-    @Override
-    public void configure(ResourceServerSecurityConfigurer resources) {
-        resources.tokenServices(tokenServices);
-    }
-
-    @Override
-    public void configure(HttpSecurity http) throws Exception {
-        http.requestMatchers()
-            .and()
-            .authorizeRequests()
-            .antMatchers("/actuator/**", "/api-docs/**","/oauth/*").permitAll()
-            .antMatchers("/api/**" ).authenticated();
-    }
-
+//    private ResourceServerTokenServices tokenServices;
+//
+//    @Autowired
+//    public ResourceConfig(ResourceServerTokenServices tokenServices) {
+//        this.tokenServices = tokenServices;
+//    }
+//
+//    @Override
+//    public void configure(ResourceServerSecurityConfigurer resources) {
+//        resources.tokenServices(tokenServices);
+//    }
+//
+//    @Override
+//    public void configure(HttpSecurity http) throws Exception {
+//        http.requestMatchers()
+//            .and()
+//            .authorizeRequests()
+//            .antMatchers("/actuator/**", "/api-docs/**", "/oauth/*", "/sign-up/**").permitAll()
+//            .antMatchers("/api/**" ).authenticated();
+//    }
 }

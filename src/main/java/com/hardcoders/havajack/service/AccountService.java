@@ -1,7 +1,7 @@
 package com.hardcoders.havajack.service;
 
 import com.hardcoders.havajack.model.Account;
-import com.hardcoders.havajack.repository.UserRepository;
+import com.hardcoders.havajack.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
@@ -18,24 +18,21 @@ import java.util.List;
 @Qualifier(value = "accountService")
 public class AccountService implements UserDetailsService {
 
-    private UserRepository userRepository;
+    private AccountRepository accountRepository;
 
     @Autowired
-    public AccountService(UserRepository userRepository) {
-        this.userRepository = userRepository;
+    public AccountService(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
     }
 
     @Override
     public UserDetails loadUserByUsername(String phone) throws UsernameNotFoundException {
-        Account account = userRepository.findByPhone(phone);
-
-        if(account == null) {
-            throw new UsernameNotFoundException(String.format("The user with phone number %s doesn't exist", phone));
+        Account account = accountRepository.findByPhone(phone);
+        if(account != null) {
+            List<GrantedAuthority> authorities = new ArrayList<>();
+            account.getRoles().forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getName())));
+            return new org.springframework.security.core.userdetails.User(account.getPhone(), account.getPassword(), authorities);
         }
-
-        List<GrantedAuthority> authorities = new ArrayList<>();
-        account.getRoles().forEach(role -> authorities.add(new SimpleGrantedAuthority(role.getName())));
-
-        return new org.springframework.security.core.userdetails.User(account.getPhone(), account.getPassword(), authorities);
+        throw new UsernameNotFoundException(String.format("The user with phone number %s doesn't exist", phone));
     }
 }

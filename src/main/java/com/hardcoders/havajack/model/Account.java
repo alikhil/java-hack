@@ -1,12 +1,13 @@
 package com.hardcoders.havajack.model;
 
+import lombok.Builder;
 import lombok.Data;
 
 import javax.persistence.*;
 import java.util.Collection;
 
 @Entity
-@Data
+@Data @Builder
 public class Account {
 
     @Id
@@ -18,8 +19,8 @@ public class Account {
     private String email;
     private String phone;
     private String password;
-    private boolean enabled;
-    private boolean tokenExpired;
+    private Integer verificationCode;
+    private String token;
 
     @ManyToMany
     @JoinTable(name = "account_roles",

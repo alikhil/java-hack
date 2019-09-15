@@ -4,8 +4,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableResourceServer;
 
-@SpringBootApplication(scanBasePackages={"com.hardcoders.havajack"})
 @EnableResourceServer
+@SpringBootApplication(exclude = {
+		org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration.class,
+})
 public class HavaJackApplication {
 
 	public static void main(String[] args) {
