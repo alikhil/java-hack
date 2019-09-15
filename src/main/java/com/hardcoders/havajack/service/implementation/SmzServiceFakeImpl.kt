@@ -34,8 +34,8 @@ class SmzServiceFakeImpl @Autowired constructor(
         return ReciptCancelationResult("DELETED")
     }
 
-    override fun postIncome(income: IncomeForm): Receipt {
-        val income = incomeRepository.save(Income(income))
+    override fun postIncome(incomeForm: IncomeForm): Receipt {
+        val income = incomeRepository.save(Income(incomeForm))
         return Receipt(income.id.toString(), "https://needreceipt.com/restaurant2Default.png")
     }
 
